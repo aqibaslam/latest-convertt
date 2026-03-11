@@ -1,12 +1,6 @@
-// ============================================================
-// Types — yahan se API ke sath data shapes define hain
-// Agar aapki API different fields return kare to sirf
-// yahan update karein, baki components automatically adjust honge
-// ============================================================
-
 export interface HeroData {
-  twenty_k_heading: string       // e.g. "3.5X"
-  project_managed_heading: string // e.g. "Average conversion uplift"
+  twenty_k_heading: string
+  project_managed_heading: string
   hero_title: string
   hero_cta: string
   hero_cta_url: string
@@ -24,13 +18,12 @@ export interface BrandLogoData {
 
 export interface CaseStudyItem {
   id: number
-  before_title: string
-  after_title: string
+  title: string
   before_image: { url: string; alt: string }
   after_image: { url: string; alt: string }
   before_desk_image: { url: string; alt: string }
   after_desk_image: { url: string; alt: string }
-  categories: string[] // slugs: ['beauty', 'supplements', etc.]
+  categories: string[]
 }
 
 export interface CaseStudySectionData {
@@ -39,4 +32,20 @@ export interface CaseStudySectionData {
   cta_text: string
   cta_url: string
   case_studies: CaseStudyItem[]
+}
+
+export interface StoryItem {
+  id: number
+  video_vimeo_link: string
+  name: string
+  title: string
+  thumbnail: string
+}
+
+export interface ClientStoriesData {
+  stories_subtitle: string
+  stories_title: string
+  stories_cta: string
+  stories_cta_url: string
+  reviews: StoryItem[]
 }
