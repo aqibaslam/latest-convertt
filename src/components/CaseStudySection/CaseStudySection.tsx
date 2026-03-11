@@ -1,7 +1,7 @@
 'use client'
 import { useState, useEffect, useRef } from 'react'
 import Image from 'next/image'
-import type { CaseStudySectionData, CaseStudyItem } from '@/types'
+import type { CaseStudySectionData, CaseStudyItem } from '@/lib/api'
 import styles from './CaseStudySection.module.css'
 
 const CATEGORIES = [
