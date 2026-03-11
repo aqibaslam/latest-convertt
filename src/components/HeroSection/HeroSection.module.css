@@ -1,0 +1,176 @@
+.mainBg {
+  background-image: url('https://convertt.co/wp-content/uploads/2026/02/Background_mask-group-scaled.webp');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.heroRoi {
+  padding: 160px 0 80px;
+}
+
+.pageWidth {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 140px;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Badge */
+.badge {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  border: 1px solid rgba(222, 216, 211, 1);
+  padding: 5px 12px;
+  border-radius: 100px;
+  width: fit-content;
+}
+
+.badgeGradient {
+  background: linear-gradient(90deg, #ff2e2e 0%, #ee7b16 36.28%, #8a43e1 69.75%, #d510fc 100%);
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 22px;
+}
+
+.badgeText {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 22px;
+  color: #000;
+}
+
+/* Title */
+.heroTitle {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 800;
+  font-size: 64px;
+  line-height: 110%;
+  letter-spacing: -1.5px;
+  text-align: center;
+  color: rgba(30, 30, 30, 1);
+  padding: 32px 0;
+}
+
+/* Benefits */
+.benefits {
+  display: flex;
+  gap: 32px;
+  justify-content: center;
+  align-items: center;
+}
+
+.benefitItem {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 27px;
+  color: rgba(76, 76, 76, 1);
+}
+
+/* CTA */
+.ctaBtn {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  height: 56px;
+  width: fit-content;
+  padding: 0 8px 0 24px;
+  margin: 40px auto 20px;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 16px;
+  color: rgba(250, 250, 250, 1);
+  text-decoration: none;
+  border: 3px solid transparent;
+  background:
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.95), #000) padding-box,
+    conic-gradient(from var(--bg-angle), #ff2e2e 0%, #ff6b2e 15%, #ee7b16 30%, #c96dd8 60%, #8a43e1 75%, #d510fc 90%, #ff2e2e 100%) border-box;
+  animation: spin 8s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.ctaArrow {
+  border-radius: 50%;
+  border: 2px solid transparent;
+  background:
+    linear-gradient(#fff, #fff) padding-box,
+    linear-gradient(90deg, #ff2e2e -9.6%, #ee7b16 38.29%, #8a43e1 82.47%, #d510fc 122.4%) border-box;
+}
+
+.ctaBtn:hover {
+  background: linear-gradient(135deg, #ff5d48 0%, #ff7a5c 50%, #ff9070 100%);
+  border: 0;
+  animation: none;
+  transform: translateY(-2px);
+}
+
+/* Rating */
+.rating {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 22px;
+  color: #4c4c4c;
+  text-align: center;
+}
+
+/* ===== MOBILE ===== */
+@media (max-width: 768px) {
+  .mainBg {
+    background-image: url('https://convertt.co/wp-content/uploads/2026/02/Frame2147241981-scaled.webp');
+  }
+
+  .heroRoi {
+    padding: 84px 0 24px;
+  }
+
+  .pageWidth {
+    padding: 0 16px;
+  }
+
+  .badge {
+    margin: 0;
+  }
+
+  .badgeGradient {
+    font-size: 16px;
+  }
+
+  .badgeText {
+    font-size: 12px;
+  }
+
+  .heroTitle {
+    font-size: 38px;
+    letter-spacing: -2px;
+    text-align: left;
+    padding: 8px 0 16px;
+  }
+
+  .benefits {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .benefitItem {
+    font-size: 16px;
+  }
+
+  .ctaBtn {
+    width: 100%;
+    justify-content: space-between;
+    margin: 26px 0 8px;
+    max-width: 100%;
+    border: 2px solid transparent;
+  }
+}

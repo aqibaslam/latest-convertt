@@ -1,0 +1,399 @@
+.section {
+  padding: 80px 0;
+  overflow: hidden;
+}
+
+.pageWidth {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 80px;
+}
+
+.sectionHeader {
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+.sectionLabel {
+  font-weight: 500;
+  font-size: 16px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: rgba(255, 70, 46, 1);
+}
+
+.sectionTitle {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 800;
+  font-size: 48px;
+  line-height: 110%;
+  letter-spacing: -1px;
+  color: #1e1e1e;
+  padding: 12px 0 0;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 32px;
+  align-items: start;
+}
+
+/* Sidebar */
+.allTabsContainer {
+  position: sticky;
+  top: 100px;
+}
+
+.sidebar {
+  background: #fafafa;
+  border: 1px solid rgba(233, 233, 233, 1);
+  border-radius: 16px;
+  padding: 20px;
+  margin-bottom: 16px;
+}
+
+.industriesHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.industriesTitle {
+  font-weight: 600;
+  font-size: 14px;
+  color: #1e1e1e;
+}
+
+.tabsContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.tab {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 500;
+  color: #4c4c4c;
+  text-align: left;
+  transition: all 0.2s;
+  width: 100%;
+}
+
+.tab:hover {
+  background: rgba(255, 70, 46, 0.06);
+  color: #1e1e1e;
+}
+
+.tabActive {
+  background: rgba(255, 70, 46, 0.1) !important;
+  color: rgba(255, 70, 46, 1) !important;
+  font-weight: 600 !important;
+}
+
+.tabText {
+  flex: 1;
+}
+
+.tabCount {
+  font-size: 13px;
+  color: #888;
+}
+
+.tabActive .tabCount {
+  color: rgba(255, 70, 46, 0.7);
+}
+
+/* CTA Button */
+.ctaButton {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 50px;
+  height: 56px;
+  width: 100%;
+  padding: 0 8px 0 24px;
+  font-family: inherit;
+  font-weight: 600;
+  font-size: 15px;
+  color: #fafafa;
+  text-decoration: none;
+  border: 3px solid transparent;
+  background:
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.95), #000) padding-box,
+    conic-gradient(from var(--bg-angle), #ff2e2e 0%, #ff6b2e 15%, #ee7b16 30%, #c96dd8 60%, #8a43e1 75%, #d510fc 90%, #ff2e2e 100%) border-box;
+  animation: spin 8s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  transition: all 0.5s;
+}
+
+.ctaButton:hover {
+  background: linear-gradient(135deg, #ff5d48, #ff7a5c, #ff9070);
+  border: 0;
+  animation: none;
+  transform: translateY(-2px);
+}
+
+/* Device toggle */
+.deviceToggle {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 24px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #4c4c4c;
+}
+
+.toggleSwitch {
+  position: relative;
+  width: 44px;
+  height: 24px;
+  cursor: pointer;
+}
+
+.toggleSwitch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+  position: absolute;
+}
+
+.toggleSlider {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: #e0e0e0;
+  border-radius: 24px;
+  transition: 0.3s;
+}
+
+.toggleSlider::before {
+  content: '';
+  position: absolute;
+  height: 18px;
+  width: 18px;
+  left: 3px;
+  top: 3px;
+  background: #fff;
+  border-radius: 50%;
+  transition: 0.3s;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+}
+
+.toggleSwitch input:checked + .toggleSlider {
+  background: rgba(255, 70, 46, 1);
+}
+
+.toggleSwitch input:checked + .toggleSlider::before {
+  transform: translateX(20px);
+}
+
+/* Slide */
+.slideWrapper {
+  background: #f4f4f4;
+  border: 1px solid rgba(233, 233, 233, 1);
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.slideContent {
+  padding: 16px;
+}
+
+.slideInner {
+  display: flex;
+  width: 100%;
+}
+
+.deviceDesktop,
+.deviceMobile {
+  display: flex;
+  gap: 16px;
+  width: 100%;
+}
+
+.imageSection {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.sectionTag {
+  font-weight: 700;
+  font-size: 11px;
+  letter-spacing: 1px;
+  color: #808080;
+}
+
+.imagesWrapper {
+  border-radius: 12px;
+  overflow: hidden;
+  background: #e8e8e8;
+}
+
+.imageContainer {
+  height: 520px;
+  overflow: hidden;
+  position: relative;
+}
+
+.scrollImg {
+  width: 100%;
+  display: block;
+  transition: transform 0.5s ease;
+}
+
+.scrollHint {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 11px;
+  color: #808080;
+}
+
+/* Controls */
+.controls {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 20px;
+  border-top: 1px solid rgba(233, 233, 233, 1);
+}
+
+.navBtn {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid rgba(233, 233, 233, 1);
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s;
+  flex-shrink: 0;
+}
+
+.navBtn:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.navBtn:not(:disabled):hover {
+  background: #f5f5f5;
+}
+
+.pagination {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+  flex: 1;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #e0e0e0;
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s;
+  padding: 0;
+}
+
+.dotActive {
+  background: rgba(255, 70, 46, 1);
+}
+
+/* ===== MOBILE ===== */
+@media (max-width: 768px) {
+  .section {
+    padding: 40px 0;
+  }
+
+  .pageWidth {
+    padding: 0;
+  }
+
+  .sectionHeader {
+    padding: 0 16px;
+  }
+
+  .sectionTitle {
+    font-size: 32px;
+    padding: 12px 0 0;
+  }
+
+  .container {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .allTabsContainer {
+    position: static;
+  }
+
+  .sidebar {
+    background: transparent;
+    border: none;
+    border-radius: 0;
+    padding: 0;
+    margin-bottom: 0;
+  }
+
+  .industriesHeader {
+    display: none;
+  }
+
+  .tabsContainer {
+    flex-direction: row;
+    overflow-x: auto;
+    scrollbar-width: none;
+    padding: 0 16px 16px;
+    gap: 8px;
+  }
+
+  .tabsContainer::-webkit-scrollbar {
+    display: none;
+  }
+
+  .tab {
+    min-width: fit-content;
+    white-space: nowrap;
+  }
+
+  .tabCount {
+    display: none;
+  }
+
+  .ctaButton {
+    display: none;
+  }
+
+  .contentArea {
+    padding: 0 8px;
+  }
+
+  .imageContainer {
+    height: 400px;
+  }
+
+  .navBtn {
+    display: none;
+  }
+
+  .pagination {
+    justify-content: center;
+  }
+}

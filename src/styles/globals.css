@@ -1,0 +1,44 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@700;800&display=swap');
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: #fff;
+  color: #1e1e1e;
+  -webkit-font-smoothing: antialiased;
+}
+
+@property --bg-angle {
+  inherits: false;
+  initial-value: 0deg;
+  syntax: "<angle>";
+}
+
+@keyframes spin {
+  to { --bg-angle: 360deg; }
+}
+
+@keyframes marquee-loop {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+/* ========== SWIPER OVERRIDES ========== */
+.swiper-pagination-bullet {
+  width: 8px !important;
+  height: 8px !important;
+  background: #e0e0e0 !important;
+  opacity: 1 !important;
+}
+.swiper-pagination-bullet-active {
+  background: rgba(255, 70, 46, 1) !important;
+}

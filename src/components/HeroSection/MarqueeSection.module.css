@@ -1,0 +1,54 @@
+.marqueeSection {
+  width: 100%;
+  overflow: hidden;
+  padding-bottom: 40px;
+}
+
+.container {
+  width: 100%;
+  overflow: hidden;
+}
+
+.track {
+  display: flex;
+  width: max-content;
+  animation: marquee-loop 25s linear infinite;
+  will-change: transform;
+}
+
+.container:hover .track {
+  animation-play-state: paused;
+}
+
+.content {
+  display: flex;
+}
+
+.card {
+  flex: 0 0 auto;
+  width: 272px;
+  height: 490px;
+  padding: 10px;
+  margin-right: 12px;
+  border-radius: 20px;
+  background: #fafafa;
+  position: relative;
+}
+
+@keyframes marquee-loop {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+@media (max-width: 768px) {
+  .track {
+    animation-duration: 20s;
+  }
+
+  .card {
+    width: 200px;
+    height: 352px;
+    padding: 8px;
+    margin-right: 8px;
+  }
+}
