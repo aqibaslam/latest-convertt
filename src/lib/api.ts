@@ -26,6 +26,8 @@ export interface BrandLogoData {
 export interface CaseStudyItem {
   id: number
   title: string
+  before_title: string    // ← add karo
+  after_title: string     // ← add karo
   before_image: { url: string; alt: string }
   after_image: { url: string; alt: string }
   before_desk_image: { url: string; alt: string }
