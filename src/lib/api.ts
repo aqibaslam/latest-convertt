@@ -26,8 +26,8 @@ export interface BrandLogoData {
 export interface CaseStudyItem {
   id: number
   title: string
-  before_title: string    // ← add karo
-  after_title: string     // ← add karo
+  before_title: string
+  after_title: string
   before_image: { url: string; alt: string }
   after_image: { url: string; alt: string }
   before_desk_image: { url: string; alt: string }
@@ -61,8 +61,6 @@ export interface ClientStoriesData {
 
 // ============================================================
 // REVIEWS — Live API call
-// ACF field name: video_vimeo_link  (confirmed from API)
-// ACF field name: name, title, thumbnail, review
 // ============================================================
 export async function getClientStoriesData(): Promise<ClientStoriesData> {
   try {
@@ -74,7 +72,6 @@ export async function getClientStoriesData(): Promise<ClientStoriesData> {
 
     const reviews: StoryItem[] = posts.map((post: any) => {
       const acf = post.acf || {}
-      // Extract vimeo ID from iframe/oembed formatted_value or direct URL
       const rawVimeo: string =
         acf.video_vimeo_link?.formatted_value ||
         acf.video_vimeo_link ||
@@ -116,7 +113,6 @@ export async function getClientStoriesData(): Promise<ClientStoriesData> {
 
 // ============================================================
 // CASE STUDIES — Live API call
-// ACF fields: before_image, after_image, before_desk_image, after_desk_image
 // ============================================================
 export async function getCaseStudyData(): Promise<CaseStudySectionData> {
   try {
@@ -137,6 +133,8 @@ export async function getCaseStudyData(): Promise<CaseStudySectionData> {
       return {
         id: post.id,
         title: post.title?.rendered || '',
+        before_title: acf.before_title || 'Before',
+        after_title: acf.after_title || 'After',
         before_image: { url: acf.before_image?.url || '', alt: acf.before_image?.alt || 'Before' },
         after_image: { url: acf.after_image?.url || '', alt: acf.after_image?.alt || 'After' },
         before_desk_image: { url: acf.before_desk_image?.url || '', alt: acf.before_desk_image?.alt || 'Before' },
@@ -166,7 +164,7 @@ export async function getCaseStudyData(): Promise<CaseStudySectionData> {
 }
 
 // ============================================================
-// HERO — Static (ACF Flexible Content, no REST endpoint)
+// HERO — Static
 // ============================================================
 export async function getHeroData(): Promise<HeroData> {
   return {
@@ -194,7 +192,7 @@ export async function getHeroData(): Promise<HeroData> {
 }
 
 // ============================================================
-// BRAND LOGOS — Static (ACF Flexible Content, no REST endpoint)
+// BRAND LOGOS — Static
 // ============================================================
 export async function getBrandLogoData(): Promise<BrandLogoData> {
   return {
@@ -229,86 +227,26 @@ export async function getBrandLogoData(): Promise<BrandLogoData> {
 }
 
 // ============================================================
-// FALLBACK DATA — From real API (used if live call fails)
-// All data extracted directly from API response files
+// FALLBACK DATA
 // ============================================================
 
 const FALLBACK_REVIEWS: StoryItem[] = [
-  {
-    id: 6738,
-    name: 'Henry',
-    title: 'E-commerce Entrepreneur',
-    video_vimeo_link: 'https://player.vimeo.com/video/1131704385?badge=0&autopause=0&player_id=0&app_id=58479',
-    thumbnail: '',
-  },
-  {
-    id: 6736,
-    name: 'Clare',
-    title: 'Founder of Yourdayly',
-    video_vimeo_link: 'https://player.vimeo.com/video/1131703823?badge=0&autopause=0&player_id=0&app_id=58479',
-    thumbnail: '',
-  },
-  {
-    id: 6734,
-    name: 'Lisa De Rosa',
-    title: 'Director of Corporate Partnerships',
-    video_vimeo_link: 'https://player.vimeo.com/video/1131702115?badge=0&autopause=0&player_id=0&app_id=58479',
-    thumbnail: '',
-  },
-  {
-    id: 6495,
-    name: 'June',
-    title: 'Founder of Elvora',
-    video_vimeo_link: 'https://player.vimeo.com/video/1103737000?badge=0&autopause=0&player_id=0&app_id=58479',
-    thumbnail: 'https://convertt.co/wp-content/uploads/2025/07/june-scaled.png',
-  },
-  {
-    id: 6493,
-    name: 'Jeff',
-    title: 'Founder of Ethelete',
-    video_vimeo_link: 'https://player.vimeo.com/video/1103737045?badge=0&autopause=0&player_id=0&app_id=58479',
-    thumbnail: 'https://convertt.co/wp-content/uploads/2025/07/jeff-scaled.png',
-  },
-  {
-    id: 6487,
-    name: 'Mustafa',
-    title: 'Founder of BMG',
-    video_vimeo_link: 'https://player.vimeo.com/video/1103737249?badge=0&autopause=0&player_id=0&app_id=58479',
-    thumbnail: 'https://convertt.co/wp-content/uploads/2025/07/Mustufa.png',
-  },
-  {
-    id: 5435,
-    name: 'Mark Rushworth',
-    title: 'Head of SEO at YDS GROUP',
-    video_vimeo_link: 'https://player.vimeo.com/video/1103737220?badge=0&autopause=0&player_id=0&app_id=58479',
-    thumbnail: 'https://convertt.co/wp-content/uploads/2024/12/convertt_mark_rushworth.png',
-  },
-  {
-    id: 5102,
-    name: 'Jonathan Farris',
-    title: 'Senior Vice President of Vane.ag',
-    video_vimeo_link: 'https://player.vimeo.com/video/1103751115?badge=0&autopause=0&player_id=0&app_id=58479',
-    thumbnail: 'https://convertt.co/wp-content/uploads/2024/12/video-testimonial-3-1.png',
-  },
-  {
-    id: 5085,
-    name: 'Dr. Khaled Sadek',
-    title: 'CEO',
-    video_vimeo_link: 'https://player.vimeo.com/video/1103737201?badge=0&autopause=0&player_id=0&app_id=58479',
-    thumbnail: 'https://convertt.co/wp-content/uploads/2024/12/WhatsApp-Video-2024-10-14-at-21.59.10_988d4cf1-1-1.png',
-  },
-  {
-    id: 5055,
-    name: 'Dr. Hassan & Hussein Dalghous',
-    title: 'CEO',
-    video_vimeo_link: 'https://player.vimeo.com/video/1103736959?badge=0&autopause=0&player_id=0&app_id=58479',
-    thumbnail: 'https://convertt.co/wp-content/uploads/2024/12/WhatsApp-Video-2024-10-14-at-21.59.10_988d4cf1-1.png',
-  },
+  { id: 6738, name: 'Henry', title: 'E-commerce Entrepreneur', video_vimeo_link: 'https://player.vimeo.com/video/1131704385?badge=0&autopause=0&player_id=0&app_id=58479', thumbnail: '' },
+  { id: 6736, name: 'Clare', title: 'Founder of Yourdayly', video_vimeo_link: 'https://player.vimeo.com/video/1131703823?badge=0&autopause=0&player_id=0&app_id=58479', thumbnail: '' },
+  { id: 6734, name: 'Lisa De Rosa', title: 'Director of Corporate Partnerships', video_vimeo_link: 'https://player.vimeo.com/video/1131702115?badge=0&autopause=0&player_id=0&app_id=58479', thumbnail: '' },
+  { id: 6495, name: 'June', title: 'Founder of Elvora', video_vimeo_link: 'https://player.vimeo.com/video/1103737000?badge=0&autopause=0&player_id=0&app_id=58479', thumbnail: 'https://convertt.co/wp-content/uploads/2025/07/june-scaled.png' },
+  { id: 6493, name: 'Jeff', title: 'Founder of Ethelete', video_vimeo_link: 'https://player.vimeo.com/video/1103737045?badge=0&autopause=0&player_id=0&app_id=58479', thumbnail: 'https://convertt.co/wp-content/uploads/2025/07/jeff-scaled.png' },
+  { id: 6487, name: 'Mustafa', title: 'Founder of BMG', video_vimeo_link: 'https://player.vimeo.com/video/1103737249?badge=0&autopause=0&player_id=0&app_id=58479', thumbnail: 'https://convertt.co/wp-content/uploads/2025/07/Mustufa.png' },
+  { id: 5435, name: 'Mark Rushworth', title: 'Head of SEO at YDS GROUP', video_vimeo_link: 'https://player.vimeo.com/video/1103737220?badge=0&autopause=0&player_id=0&app_id=58479', thumbnail: 'https://convertt.co/wp-content/uploads/2024/12/convertt_mark_rushworth.png' },
+  { id: 5102, name: 'Jonathan Farris', title: 'Senior Vice President of Vane.ag', video_vimeo_link: 'https://player.vimeo.com/video/1103751115?badge=0&autopause=0&player_id=0&app_id=58479', thumbnail: 'https://convertt.co/wp-content/uploads/2024/12/video-testimonial-3-1.png' },
+  { id: 5085, name: 'Dr. Khaled Sadek', title: 'CEO', video_vimeo_link: 'https://player.vimeo.com/video/1103737201?badge=0&autopause=0&player_id=0&app_id=58479', thumbnail: 'https://convertt.co/wp-content/uploads/2024/12/WhatsApp-Video-2024-10-14-at-21.59.10_988d4cf1-1-1.png' },
+  { id: 5055, name: 'Dr. Hassan & Hussein Dalghous', title: 'CEO', video_vimeo_link: 'https://player.vimeo.com/video/1103736959?badge=0&autopause=0&player_id=0&app_id=58479', thumbnail: 'https://convertt.co/wp-content/uploads/2024/12/WhatsApp-Video-2024-10-14-at-21.59.10_988d4cf1-1.png' },
 ]
 
 const FALLBACK_CASE_STUDIES: CaseStudyItem[] = [
   {
     id: 9091, title: 'Armra',
+    before_title: 'Before', after_title: 'After',
     before_image: { url: 'https://convertt.co/wp-content/uploads/2026/03/armara-before-mobile-1-scaled.png', alt: 'Before' },
     after_image: { url: 'https://convertt.co/wp-content/uploads/2026/03/armara-after-mobile-2-scaled.jpg', alt: 'After' },
     before_desk_image: { url: 'https://convertt.co/wp-content/uploads/2026/03/armara-before-desktop-scaled.jpg', alt: 'Before' },
@@ -317,6 +255,7 @@ const FALLBACK_CASE_STUDIES: CaseStudyItem[] = [
   },
   {
     id: 9065, title: 'Phit Balance',
+    before_title: 'Before', after_title: 'After',
     before_image: { url: 'https://convertt.co/wp-content/uploads/2026/03/phitbalance-after-desktop-4-scaled.jpg', alt: 'Before' },
     after_image: { url: 'https://convertt.co/wp-content/uploads/2026/03/phitbalance-after-desktop-1-scaled.jpg', alt: 'After' },
     before_desk_image: { url: 'https://convertt.co/wp-content/uploads/2026/03/phitbalance-after-desktop-2-scaled.jpg', alt: 'Before' },
@@ -325,6 +264,7 @@ const FALLBACK_CASE_STUDIES: CaseStudyItem[] = [
   },
   {
     id: 9060, title: 'Allaura',
+    before_title: 'Before', after_title: 'After',
     before_image: { url: 'https://convertt.co/wp-content/uploads/2026/03/allaura-before-mobile-1-scaled.jpg', alt: 'Before' },
     after_image: { url: 'https://convertt.co/wp-content/uploads/2026/03/allaura-after-mobile-scaled.jpg', alt: 'After' },
     before_desk_image: { url: 'https://convertt.co/wp-content/uploads/2026/03/allaura-before-desktop-1-scaled.jpg', alt: 'Before' },
@@ -333,6 +273,7 @@ const FALLBACK_CASE_STUDIES: CaseStudyItem[] = [
   },
   {
     id: 9055, title: 'CyperGlow',
+    before_title: 'Before', after_title: 'After',
     before_image: { url: 'https://convertt.co/wp-content/uploads/2026/03/cyperglow-before-1-scaled.jpg', alt: 'Before' },
     after_image: { url: 'https://convertt.co/wp-content/uploads/2026/03/cyperglow-after-mobile-scaled.jpg', alt: 'After' },
     before_desk_image: { url: 'https://convertt.co/wp-content/uploads/2026/03/cyperglow-before-scaled.jpg', alt: 'Before' },
@@ -341,6 +282,7 @@ const FALLBACK_CASE_STUDIES: CaseStudyItem[] = [
   },
   {
     id: 9048, title: 'Olivea',
+    before_title: 'Before', after_title: 'After',
     before_image: { url: 'https://convertt.co/wp-content/uploads/2026/03/olivea-before-mobile-1-scaled.jpg', alt: 'Before' },
     after_image: { url: 'https://convertt.co/wp-content/uploads/2026/03/olivea-after-mobile-scaled.jpg', alt: 'After' },
     before_desk_image: { url: 'https://convertt.co/wp-content/uploads/2026/03/olivea-before-desktop-1-scaled.jpg', alt: 'Before' },
@@ -349,6 +291,7 @@ const FALLBACK_CASE_STUDIES: CaseStudyItem[] = [
   },
   {
     id: 9043, title: 'Pure Filth',
+    before_title: 'Before', after_title: 'After',
     before_image: { url: 'https://convertt.co/wp-content/uploads/2026/03/purefilth-before-mobile-scaled.jpg', alt: 'Before' },
     after_image: { url: 'https://convertt.co/wp-content/uploads/2026/03/purefilth-After-mobile-scaled.jpg', alt: 'After' },
     before_desk_image: { url: 'https://convertt.co/wp-content/uploads/2026/03/purefilth-before-Desktop-scaled.jpg', alt: 'Before' },
@@ -357,6 +300,7 @@ const FALLBACK_CASE_STUDIES: CaseStudyItem[] = [
   },
   {
     id: 9037, title: 'Fourth Youth',
+    before_title: 'Before', after_title: 'After',
     before_image: { url: 'https://convertt.co/wp-content/uploads/2026/03/fourthyouth-before-mobile-scaled.png', alt: 'Before' },
     after_image: { url: 'https://convertt.co/wp-content/uploads/2026/03/fourthyouth-After-mobile-1-scaled.jpg', alt: 'After' },
     before_desk_image: { url: 'https://convertt.co/wp-content/uploads/2026/03/fourthyouth-before-Desktop-scaled.png', alt: 'Before' },
@@ -365,6 +309,7 @@ const FALLBACK_CASE_STUDIES: CaseStudyItem[] = [
   },
   {
     id: 7625, title: 'Eyeoflove',
+    before_title: 'Before', after_title: 'After',
     before_image: { url: 'https://convertt.co/wp-content/uploads/2025/12/eyeoflove-before-scaled.jpg', alt: 'Before' },
     after_image: { url: 'https://convertt.co/wp-content/uploads/2025/12/eyeoflove-after-scaled.jpg', alt: 'After' },
     before_desk_image: { url: 'https://convertt.co/wp-content/uploads/2025/12/1440w-default-3-scaled.png', alt: 'Before' },
@@ -373,6 +318,7 @@ const FALLBACK_CASE_STUDIES: CaseStudyItem[] = [
   },
   {
     id: 7622, title: 'Fuel',
+    before_title: 'Before', after_title: 'After',
     before_image: { url: 'https://convertt.co/wp-content/uploads/2025/12/fuel-before-1-scaled.jpg', alt: 'Before' },
     after_image: { url: 'https://convertt.co/wp-content/uploads/2025/12/Fuel-after-scaled.jpg', alt: 'After' },
     before_desk_image: { url: 'https://convertt.co/wp-content/uploads/2025/12/fuel-before-scaled.png', alt: 'Before' },
@@ -381,6 +327,7 @@ const FALLBACK_CASE_STUDIES: CaseStudyItem[] = [
   },
   {
     id: 7619, title: 'Hemp Collect',
+    before_title: 'Before', after_title: 'After',
     before_image: { url: 'https://convertt.co/wp-content/uploads/2025/12/HEMP-BEFORE-scaled.jpg', alt: 'Before' },
     after_image: { url: 'https://convertt.co/wp-content/uploads/2025/12/hemp-collect-after-1-1-scaled.jpg', alt: 'After' },
     before_desk_image: { url: 'https://convertt.co/wp-content/uploads/2025/12/hamp-collect-before-scaled.png', alt: 'Before' },
